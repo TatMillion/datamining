@@ -77,7 +77,7 @@ class AutoyoulaSpider(scrapy.Spider):
                 end = script.find("%22%2C%22avatar")
                 if end == -1:
                     end = script.find("%22%2C%22alias")
-                data["author"] = response.urljoin(f"/user/{script[start:end]}")
+                data["author"] = response.urljoin(f"/user/{script[start:end]}").replace("auto.", "", 1)
 
                 start = script.find("phone%22%2C%22") + 14
                 end = script.find("%3D%3D%22%2C%22")
